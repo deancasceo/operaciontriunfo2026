@@ -7,10 +7,10 @@
     <style>
         /* ESTILOS (Diseño Móvil) */
         :root {
-            --bg-color: #0b192c;
+            --bg-color: #ce98ee;
             --text-color: #ffffff;
-            --accent-color: #ffc107;
-            --card-bg: #1a365d;
+            --accent-color: #9062e7;
+            --card-bg: #7137ea;
         }
         body {
             margin: 0; padding: 0;
@@ -37,12 +37,12 @@
             width: 100%; aspect-ratio: 1/1;
             border-radius: 50%; object-fit: cover;
             border: 2px solid var(--accent-color);
-            background-color: #333;
+            background-color: #d862d3;
         }
         .name { font-size: 0.75rem; margin-top: 5px; font-weight: bold; word-break: break-word;}
         
         /* Estados especiales */
-        .disabled { opacity: 0.4; filter: grayscale(100%); pointer-events: none; border-color: #666; }
+        .disabled { opacity: 0.4; filter: grayscale(100%); pointer-events: none; border-color: #793ee4; }
         .hidden { display: none !important; }
         
         /* Formulario de votación */
@@ -61,7 +61,7 @@
             border: none; padding: 15px 30px; font-size: 1.2rem; font-weight: bold;
             border-radius: 25px; width: 100%; cursor: pointer; margin-top: 10px;
         }
-        .btn-secondary { background-color: #555; color: #fff; margin-top: 15px; }
+        .btn-secondary { background-color: #dc49b2; color: #fff; margin-top: 15px; }
         
         /* Resultados */
         .winner-box {
@@ -74,7 +74,7 @@
         #admin-panel {
             position: fixed; bottom: 20px; right: 20px; z-index: 1000;
         }
-        .btn-danger { background-color: #e53e3e; color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold; border:none; box-shadow: 0 4px 6px rgba(0,0,0,0.5);}
+        .btn-danger { background-color: #763ee5b3; color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold; border:none; box-shadow: 0 4px 6px rgba(0,0,0,0.5);}
     </style>
 </head>
 <body>
@@ -83,6 +83,7 @@
         
         <!-- PANTALLA 1: Quién eres -->
         <div id="view-login">
+            <h1>¡Bienvenido a OT Voto!</h1>
             <h1>¿Quién eres?</h1>
             <p>Selecciona tu perfil para empezar a votar</p>
             <div id="grid-login" class="grid-4x4"></div>
@@ -100,24 +101,24 @@
             <h1 id="vote-title">Evaluando a...</h1>
             <div class="vote-card">
                 <div class="vote-category">
-                    <label>🎭 Acting (Interpretación)</label>
+                    <label>Acting (Interpretación)</label>
                     <select id="score-acting">
                         <option value="" disabled selected>Elige nota...</option>
-                        <option value="1">1 - Para llorar</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5 - Aprobado pelado</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10 - ¡De Óscar!</option>
+                        <option value="1">1 - Girl retirate </option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5 - Aprobado pelado</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10 - oscar winner</option>
                     </select>
                 </div>
                 <div class="vote-category">
-                    <label>🎤 Performance (Actuación/Voz)</label>
+                    <label>Performance (En conjunto todo el acto)</label>
                     <select id="score-performance">
                         <option value="" disabled selected>Elige nota...</option>
-                        <option value="1">1 - Desastre</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10 - ¡Piel de gallina!</option>
+                        <option value="1">1 - Desastre</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5 - 6 créditos </option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10 - Pene de punta</option>
                     </select>
                 </div>
                 <div class="vote-category">
-                    <label>👗 Costume (Vestuario)</label>
+                    <label>Costume (Vestuario)</label>
                     <select id="score-costume">
                         <option value="" disabled selected>Elige nota...</option>
-                        <option value="1">1 - En pijama</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10 - ¡Iconic!</option>
+                        <option value="1">1 - Para eso no vengas</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5 - Gracias por participar</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10 - Iconic</option>
                     </select>
                 </div>
                 <button class="btn" onclick="submitVote()">Enviar Votos</button>
@@ -127,19 +128,19 @@
 
         <!-- PANTALLA 4: Resultados (Ganadores) -->
         <div id="view-results" class="hidden">
-            <h1>🏆 ¡GANADORES! 🏆</h1>
+            <h1>¡GANADORES!</h1>
             <p>Las votaciones han finalizado. Aquí están las mejores medias:</p>
             
             <div class="winner-box">
-                <h2>🎭 Mejor Acting</h2>
+                <h2>Mejor Acting</h2>
                 <div id="winner-acting" class="winner-names">Calculando...</div>
             </div>
             <div class="winner-box">
-                <h2>🎤 Mejor Performance</h2>
+                <h2>Mejor Performance</h2>
                 <div id="winner-performance" class="winner-names">Calculando...</div>
             </div>
             <div class="winner-box">
-                <h2>👗 Mejor Costume</h2>
+                <h2>Mejor Costume</h2>
                 <div id="winner-costume" class="winner-names">Calculando...</div>
             </div>
         </div>
@@ -188,7 +189,7 @@
             { id: "p6", name: "Carmona", img: "img/carmona.jpg" },
             { id: "p7", name: "Cayetana", img: "img/cayetana.jpg" },
             { id: "p8", name: "Chenoa", img: "img/chenoa.jpg" },
-            { id: "p9", name: "Crissole", img: "img/crisole.jpg" },
+            { id: "p9", name: "Crisole", img: "img/crisole.jpg" },
             { id: "p10", name: "Loreto", img: "img/loreto.jpg" },
             { id: "p11", name: "Lucia", img: "img/lucia.jpg" },
             { id: "p12", name: "Marta", img: "img/marta.jpg" },
